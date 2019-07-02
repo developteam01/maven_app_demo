@@ -9,77 +9,76 @@
     <meta http-equiv="expires" content="0">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/admin.css"/>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layui/admin.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menuList.js"></script>
 </head>
 
 <body>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">This is a demo</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="${pageContext.request.contextPath}/images/login-head.jpg" class="layui-nav-img">
-                    崔辉
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
-        </ul>
-    </div>
+<div id="LAY_app" class="layadmin-tabspage-none">
 
-    <div class="layui-side layui-bg-black" kit-side="true">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">系统管理</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="${pageContext.request.contextPath}/pages/user.jsp" target="mainiframe">用户管理</a></dd>
-                        <dd><a href="https://www.baidu.com" target="mainiframe">权限管理</a></dd>
-                        <dd><a href="https://sports.qq.com/" target="mainiframe">角色管理</a></dd>
-                    </dl>
+
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+               <%-- <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
                 </li>
+                <li class="layui-nav-item" lay-unselect="">
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>--%>
+                <li class="layui-nav-item layui-hide-xs"><a href="">控制台</a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="">商品管理</a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="">用户</a></li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
+                    <a href="javascript:;">
+                        <img src="${pageContext.request.contextPath}/images/login-head.jpg" class="layui-nav-img">
+                        崔辉
+                    </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
+                <li class="layui-nav-item"><a href="">退了</a></li>
             </ul>
         </div>
-    </div>
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <iframe src="https://www.baidu.com/" width="100%" height="100%" style="min-height: 450px" frameborder="0" scrolling="auto" id="iframe" name="mainiframe"></iframe>
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © cuihui.com - 2019-06-20
+        <div class="layui-side layui-side-menu">
+            <div class="layui-logo" lay-href="home/console.html">
+                <span>This is a demo</span>
+            </div>
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="layadmin-system-side-menu"
+                    id="layui_nav_list">
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px 15px 0px 15px;">
+                <iframe src="${pageContext.request.contextPath}" style="width: 100%; height: 300px;" frameborder="0"
+                        scrolling="auto"
+                        id="iframe" name="mainiframe">
+                </iframe>
+            </div>
+            <!-- 底部固定区域 -->
+            <div class="layui-footer">
+                © cuihui.com - 2019-06-20
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -98,6 +97,96 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
+    getappList();
+
+    function getappList() {
+        var html = '';
+        $(data).each(function (i, v, e) {
+            if (v.child.length > 0) {
+                html += '<li class="layui-nav-item">';
+                html += '<a href="#" class="">';
+                html += '<i class="' + v.icon + '"></i>';
+                html += '<span class="menu-text"> ' + v.name + ' </span>';
+                html += '<b class="arrow fa fa-angle-down"></b>';
+                html += '</a>';
+                html += '<b class="arrow"></b>';
+                html += '<dl class="layui-nav-child">';
+                $(v.child).each(function (ii, vv, ee) {
+                    if (vv.child.length > 0) {
+                        html += '<dd class="">';
+                        html += '<a href="#" class="">';
+                        html += '<i class="menu-icon fa"></i>';
+                        html += vv.name;
+                        html += '<b class="arrow fa fa-angle-down"></b>';
+                        html += '</a>';
+                        html += '<b class="arrow"></b>';
+                        html += '<dl class="layui-nav-child">';
+                        $(vv.child).each(function (iii, vvv, eee) {
+                            if (vvv.child.length > 0) {
+                                html += '<dd class="">';
+                                html += '<a class="">';
+                                html += '<i class="menu-icon fa fa-caret-right"></i>';
+                                html += vvv.name;
+                                html += '<b class="arrow fa fa-angle-down"></b>';
+                                html += '</a>';
+                                html += '<b class="arrow"></b>';
+                                html += '<dl class="layui-nav-child">';
+                                $(vvv.child).each(function (iiii, vvvv, eeee) {
+                                    html += '<dd class="">';
+                                    html += '<a class="' + vvvv.class + '" href="' + vvvv.url + '" type="' + vvvv.type + '" target="mainiframe">';
+                                    html += vvvv.name;
+                                    html += '</a>';
+                                    html += '<b class="arrow"></b>';
+                                    html += '</dd>';
+                                })
+                                html += '</dl>';
+                                html += '</dd>'
+                            } else {
+                                html += '<dd class="">';
+                                html += '<a class="' + vvv.class + '" href="' + vvv.url + '" type="' + vvv.type + '" target="mainiframe">'
+                                html += vvv.name;
+                                html += '</a>';
+                                html += '<b class="arrow"></b>';
+                                html += '</dd>';
+                            }
+
+                        })
+                        html += '</dl>';
+                        html += '</dd>'
+                    } else {
+                        html += '<dd class="">'
+                        html += '<a  class="' + vv.class + '" href="' + vv.url + '" type="' + vv.type + '" target="mainiframe">'
+                        html += vv.name;
+                        html += '</a>'
+                        html += '<b class="arrow"></b>'
+                        html += '</dd>';
+                    }
+                })
+                html += '</dl>';
+                html += '</li>';
+            } else {
+                if (v.name == '首页') {
+                    html += '<li class="layui-nav-item">';
+                    html += '<a href="index.html">';
+                    html += '<i class="' + v.icon + '"></i>';
+                    html += '<span class="menu-text"> ' + v.name + ' </span>';
+                    html += '</a>';
+                    html += '<b class="arrow"></b>';
+                    html += '</li>'
+                } else {
+                    html += '<li class="layui-nav-item">';
+                    html += '<a class="' + v.class + '" href="' + v.url + '" type="' + v.type + '">';
+                    html += '<i class="' + v.icon + '"></i>';
+                    html += '<span class="menu-text"> ' + v.name + ' </span>';
+                    html += '</a>';
+                    html += '<b class="arrow"></b>';
+                    html += '</li>'
+                }
+
+            }
+        });
+        $('#layui_nav_list').html(html);
+    }
 </script>
 </body>
 </body>
