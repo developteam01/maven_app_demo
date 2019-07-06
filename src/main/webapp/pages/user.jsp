@@ -22,33 +22,38 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <div class="top_tool">
-    <div class="layui-form-item layui-input-inline">
-        <label class="layui-form-label" style="">姓名：</label>
-        <div class="layui-input-inline">
-            <input type="text" name="searchname" id="searchname" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" id="searchname" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-inline">
+                <select id="searchsex" lay-verify="required" class="sex_select layui-input-inline">
+                    <option value="">请选择</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn" data-type="reload" id="search-button">
+                <i class="layui-icon">&#xe615;</i> 搜索
+            </button>
+            <!-- 新增按钮 -->
+            <button class="layui-btn" type="button" id="add">
+                <i class="layui-icon">&#xe608;</i> 添加
+            </button>
         </div>
     </div>
-    <div class="layui-form-item layui-input-inline">
-        <label class="layui-form-label">性别：</label>
-        <div class="layui-input-inline">
-            <select name="searchsex" id="searchsex" lay-verify="required" class="sex_select">
-                <option value=""></option>
-                <option value="1">男</option>
-                <option value="2">女</option>
-            </select>
-        </div>
-    </div>
-    <button class="layui-btn btn_extend" data-type="reload" id="search-button">
-        <i class="layui-icon">&#xe615;</i> 搜索
-    </button>
-    <!-- 新增按钮 -->
-    <button class="layui-btn btn_extend" type="button" id="add">
-        <i class="layui-icon">&#xe608;</i> 添加
-    </button>
 </div>
-<!-- 表格 -->
-<table id="demo" lay-filter="test"></table>
-
+<div class="layui-form">
+    <!-- 表格 -->
+    <table id="demo" lay-filter="test"></table>
+</div>
 <!-- 隐藏域放入工程路径 -->
 <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
 <script type="application/javascript">
@@ -60,7 +65,7 @@ layui.use(['table','jquery','form'], function(){
     table.render({
         elem: '#demo' //对应表格元素
         ,id: 'test'
-        ,height: 558
+        ,height: $(window).height()-150
         ,url: $("#PageContext").val() + '/user/findAll' //数据接口,默认会带？page=1,limit=10,返回的数据有格式要求
         ,method: 'post'
         ,even: true //开启隔行背景

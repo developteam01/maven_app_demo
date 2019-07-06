@@ -16,12 +16,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/layui/admin.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menuList.js"></script>
 </head>
-
-<body>
 <body class="layui-layout-body">
 <div id="LAY_app" class="layadmin-tabspage-none">
-
-
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <!-- 头部区域（可配合layui已有的水平导航） -->
@@ -68,8 +64,8 @@
         </div>
         <div class="layui-body">
             <!-- 内容主体区域 -->
-            <div style="padding: 15px 15px 0px 15px;">
-                <iframe src="${pageContext.request.contextPath}" style="width: 100%; height: 300px;" frameborder="0"
+            <div>
+                <iframe src="${pageContext.request.contextPath}" style="width: 100%; height: 100%;" frameborder="0"
                         scrolling="auto"
                         id="iframe" name="mainiframe">
                 </iframe>
@@ -188,6 +184,5 @@
         $('#layui_nav_list').html(html);
     }
 </script>
-</body>
 </body>
 </html>
